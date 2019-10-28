@@ -1,0 +1,111 @@
+
+
+.Dashboard {
+  font-family: 'Oxygen', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 9vh;
+  width: 90vw;
+  height: 80vh;
+  background-color: #b41243;
+  border: 5px solid #af9e02;
+  border-radius: 40px;
+  box-shadow: 1px 1px 6px 8px #1b1b1a;
+}
+
+.Dashboard-display-container {
+  width: 80vw;
+  padding-top: 4rem;
+  text-align: center;
+  color: white;
+  border-right: 10px solid #af9e02;
+  background-color: #69162fbe;
+  border: 5px solid #af9e02;
+  border-radius: 30px;
+  margin-right: 22px;
+}
+
+.Dashboard-display {
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.Dashboard-score-container {
+  position: relative;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.Dashboard-score {
+  border-top: 3px solid #af9e02;
+  border-bottom: 3px solid #af9e02;
+  background-color: #9b0e38;
+}
+
+.Dashboard-center h3 {
+  margin: 0;
+  padding-top: 25px;
+}
+
+.Dashboard-center {
+  height: 120px;
+  width: 150px;
+  margin: 0 auto;
+  border-left: 12px solid #af9e02;
+  border-right: 12px solid #af9e02;
+  border-radius: 80px;
+  box-shadow: 1px 0px 6px 4px #00000042;
+}
+
+.Dashboard-form-container {
+  width: 20vw;
+  padding: 20px;
+  background-color: #69162fbe;
+  padding-bottom: 20px;
+  border: 5px solid #af9e02;
+  border-radius: 30px;
+}
+
+
+.FormNavigator-form {
+  color: rgb(14, 9, 9);
+  border: none;
+  padding: 3px;
+  background-color: rgba(173, 161, 161, 0.726);
+  margin-bottom: 30px;
+}
+
+.Form-input {
+  padding-left: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  color: rgb(255, 255, 255);
+  background-color: #080d25;
+}
+
+.Form-button {
+  float: right;
+  font-weight: 700;
+  margin-left: 2px;
+  color: white;
+  border: 2px solid white;
+  background-color: #080d25;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.Form-button:hover {
+  color: white;
+  border: 2px solid rgba(170, 139, 139, 0.824);
+  transition: 1s;
+}
