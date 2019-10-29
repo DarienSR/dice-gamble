@@ -7,6 +7,7 @@ class Wage extends Component {
     this.state = {
       wallet: 300,
       bid: 0,
+      bidAmt: 10,
       rollLeft: 2,
       doubleDown: false
     }
@@ -15,9 +16,14 @@ class Wage extends Component {
     this.decreaseBid = this.decreaseBid.bind(this)
     this.doubleDown = this.doubleDown.bind(this)
     this.handlegameOver = this.handlegameOver.bind(this)
+    this.setBidAmt = this.setBidAmt.bind(this)
   }
   
   doubleDown() {
+    if(this.state.wallet - this.state.bid * 2 < 0) {
+      alert("You do not have enough money to cover bid if you lose.")
+      return
+    }
     if(!this.state.doubleDown) {
       this.setState(st => ({
         bid: st.bid * 2,
@@ -27,6 +33,10 @@ class Wage extends Component {
   }
 
   handleRoll() {
+    if(this.state.wallet - this.state.bid < 0) {
+      alert("You do not have enough money to cover bid if you lose.")
+      return
+    }
     let roll = this.state.rollLeft - 1;
     this.setState({rollLeft: roll})
     this.props.handleRoll()
@@ -44,16 +54,12 @@ class Wage extends Component {
 
     this.setState({wallet: winnings, rollLeft: 2, doubleDown: false});
     
-    if(this.state.wallet <= 0){
-      alert("We've noticed you're in debt. Let us help you out with that.")
-      this.setState({wallet: 150, bid: 0})
-    }
     this.props.reset();
   }
 
-  increaseBid() {
+  increaseBid(evt) {
     if(this.state.bid >= this.state.wallet) return
-    let newBid = this.state.bid + 10
+    let newBid = this.state.bid + this.state.bidAmt;
     this.setState({bid: newBid})
   }
 
@@ -61,6 +67,11 @@ class Wage extends Component {
     if(this.state.bid === 0) return
     let newBid = this.state.bid - 10
     this.setState({bid: newBid})
+  }
+
+  setBidAmt(evt) {
+    let amt = parseInt(evt.target.value);
+    this.setState({ bidAmt: amt })
   }
 
   render() {
@@ -77,6 +88,17 @@ class Wage extends Component {
       color: '#889b73'
     }
 
+    let activeAmt = {
+      backgroundColor: "#da3566",
+      border: "none",
+      cursor: "pointer"
+    }
+
+    let disabledAmt = {
+      border: "none",
+      cursor: "pointer"
+    }
+
     return (
       <div className="Wage">
         <h2 className="Wage-controls">Controls</h2>
@@ -88,16 +110,22 @@ class Wage extends Component {
           <button disabled={gameStarted} onClick={this.decreaseBid}>-</button>
           {gameStarted ? <button style={this.state.doubleDown ? doubleDownStyle : null} onClick={this.doubleDown} title="Double Down" className="Wage-double">2x</button> : null}
          </div>
+         <div>
+           <p>Increment Amount</p>
+           <input style={this.state.bidAmt === 10 ? activeAmt : disabledAmt} type="button" name={"10"} value={10} onClick={this.setBidAmt} />
+           <input style={this.state.bidAmt === 20 ? activeAmt : disabledAmt} type="button" name={"20"} value={20} onClick={this.setBidAmt} />
+           <input style={this.state.bidAmt === 50 ? activeAmt : disabledAmt} type="button" name={"50"} value={50} onClick={this.setBidAmt} />
+         </div>
          <h4>Rolls Left: {this.state.rollLeft}</h4>
         </div>
 
         {this.props.handlegameOver ? 
         <div className="Wage-gameover">
-          <h4>
+          <h3>
             YOU { this.props.hasWon }
-          </h4>
+          </h3>
         </div>
-        : <div className="Wage-gameover"><h4></h4></div>}
+        : <div className="Wage-gameover"><h4><em>Game In Process</em></h4></div>}
 
         <div className="Wage-roll">
           <div>
