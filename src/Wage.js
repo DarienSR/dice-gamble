@@ -65,7 +65,7 @@ class Wage extends Component {
 
   decreaseBid() {
     if(this.state.bid === 0) return
-    let newBid = this.state.bid - 10
+    let newBid = this.state.bid - this.state.bidAmt;
     this.setState({bid: newBid})
   }
 
