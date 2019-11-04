@@ -23,11 +23,12 @@ handleLock() {
     }
 
     let animate, animateOpp;
-      if(this.props.face) {
+      if(this.props.animate) {
         animate = "Die Die-player shake"
         animateOpp = "Die shake"
       }
-      else {
+      
+      if(!this.props.animate){
         animate = "Die Die-player"
         animateOpp = "Die"
       }

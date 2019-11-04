@@ -14,7 +14,8 @@ class Game extends Component {
       oppScore: 0,
       oppLocked: [false, false, false, false, false],
       gameOver: false,
-      hasWon: "null"
+      hasWon: "null",
+      animate: false
     }
     this.Roll = this.Roll.bind(this);
     this.oppRoll = this.oppRoll.bind(this)
@@ -62,9 +63,10 @@ class Game extends Component {
         sum+= this.state.playerRoll[i]
       }
     }
-    let currRoll = this.state.rollLeft;
-    this.setState({playerScore: sum, playerRoll: roll, rollLeft: currRoll - 1 })
-    this.oppRoll()
+    this.setState({playerScore: sum, playerRoll: roll, animate: true }, () => {
+      setTimeout(() => this.setState({animate: false}), 1000);
+      setTimeout(() => this.oppRoll(), 1000);
+    })
   }
 
   oppRoll() {
@@ -91,18 +93,20 @@ class Game extends Component {
         sum+= this.state.oppRoll[i]
       }
     }
+    let currRoll = this.state.rollLeft;
     this.setState({oppScore: sum, oppRoll: roll })
+    setTimeout(() => this.setState({rollLeft: currRoll - 1}), 1000);
   }
 
 
   render() {
     let displayRoll = 
     this.state.playerRoll.map((die, i) => 
-      <Die player face={die} key={i} idx={i} locked={this.state.playerLocked[i]} lockDie={this.lockDie} />
+      <Die animate={this.state.animate} player face={die} key={i} idx={i} locked={this.state.playerLocked[i]} lockDie={this.lockDie} />
     )
     let displayRollOpp = 
     this.state.oppRoll.map((die, i) => 
-      <Die face={die} key={i} idx={i} locked={this.state.oppLocked[i]} lockDie={this.lockDie} />
+      <Die animate={this.state.animate} face={die} key={i} idx={i} locked={this.state.oppLocked[i]} lockDie={this.lockDie} />
     )
 
     if(this.props.isRolling) {
