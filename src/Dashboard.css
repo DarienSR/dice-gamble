@@ -9,11 +9,12 @@
   margin-top: 9vh;
   width: 90vw;
   height: 80vh;
-  background-color: #b41243;
+  background-color: #5f001d;
   border: 5px solid #af9e02;
   border-radius: 40px;
   box-shadow: 1px 1px 6px 8px #1b1b1a;
 }
+
 
 .Dashboard-display-container {
   width: 80vw;

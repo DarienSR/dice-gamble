@@ -112,9 +112,9 @@ class Wage extends Component {
          </div>
          <div>
            <p>Increment Amount</p>
-           <input style={this.state.bidAmt === 10 ? activeAmt : disabledAmt} type="button" name={"10"} value={10} onClick={this.setBidAmt} />
-           <input style={this.state.bidAmt === 20 ? activeAmt : disabledAmt} type="button" name={"20"} value={20} onClick={this.setBidAmt} />
-           <input style={this.state.bidAmt === 50 ? activeAmt : disabledAmt} type="button" name={"50"} value={50} onClick={this.setBidAmt} />
+           <input className="incrementButton" style={this.state.bidAmt === 10 ? activeAmt : disabledAmt} type="button" name={"10"} value={10} onClick={this.setBidAmt} />
+           <input className="incrementButton" style={this.state.bidAmt === 20 ? activeAmt : disabledAmt} type="button" name={"20"} value={20} onClick={this.setBidAmt} />
+           <input className="incrementButton" style={this.state.bidAmt === 50 ? activeAmt : disabledAmt} type="button" name={"50"} value={50} onClick={this.setBidAmt} />
          </div>
          <h4>Rolls Left: {this.state.rollLeft}</h4>
         </div>
