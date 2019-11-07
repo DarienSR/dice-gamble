@@ -58,8 +58,12 @@ class Wage extends Component {
   }
 
   increaseBid(evt) {
+    let newBid;
     if(this.state.bid >= this.state.wallet) return
-    let newBid = this.state.bid + this.state.bidAmt;
+    if(this.state.bid + this.state.bidAmt > this.state.wallet) 
+      newBid = this.state.wallet;
+    else
+      newBid = this.state.bid + this.state.bidAmt;
     this.setState({bid: newBid})
   }
 

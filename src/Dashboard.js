@@ -46,7 +46,7 @@ class Dashboard extends Component {
         </div>
 
         <div className="Dashboard-form-container">
-          <Wage hasWon={this.state.hasWon} reset={this.reset} handlegameOver={this.state.gameOver} handleRoll={this.handleRoll} />
+          <Wage isRolling={this.state.isRolling} hasWon={this.state.hasWon} reset={this.reset} handlegameOver={this.state.gameOver} handleRoll={this.handleRoll} />
         </div>
       </div>
     )
