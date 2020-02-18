@@ -18,7 +18,6 @@
 
 .Dashboard-display-container {
   width: 80vw;
-  padding-top: 4rem;
   text-align: center;
   color: white;
   border-right: 10px solid #af9e02;
@@ -29,8 +28,8 @@
 }
 
 .Dashboard-display {
-  margin-top: 7rem;
   display: flex;
+  margin-top: 10%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -42,6 +41,7 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  margin-bottom: 5rem;
 }
 
 .Dashboard-score {
